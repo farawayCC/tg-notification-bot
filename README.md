@@ -1,6 +1,6 @@
 # tg-notification-bot
 
-A simple and functional Telegram bot notification package for Node.js. Fork of a python package [AI-Stratov/tg-notification-bot](https://github.com/AI-Stratov/tg_notification_bot
+A simple and functional Telegram bot notification package for Node.js. Fork of a python package [AI-Stratov/tg-notification-bot](https://github.com/AI-Stratov/tg_notification_bot)
 
 ## Features
 
@@ -35,6 +35,9 @@ const bot = createTgNotificationBot({ token, chatId });
     }
 })();
 ```
+
+# To-Do:
+- [ ] Add ability to send documents using `path`, `Buffer`, or `ReadableStream` instead of file paths.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
