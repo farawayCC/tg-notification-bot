@@ -52,10 +52,24 @@ const createTgNotificationBot = ({ token, chatId }: TgNotificationBot) => {
                     await bot.getChat(modifiedChatId)
                     return modifiedChatId
                 } catch (innerError) {
-                    if (isTelegramError(innerError)) {
-                        console.error(`Telegram API error: ${innerError.message}`)
+                    if (isTelegramError(innerError) && innerError.response?.body?.error_code === 400) {
+                        // If the first modification fails, prepend with '-100' and retry
+                        const doubleModifiedChatId = '-100' + chatIdToNormalize;
+                        try {
+                            await bot.getChat(doubleModifiedChatId);
+                            return doubleModifiedChatId;
+                        } catch (secondInnerError) {
+                            if (isTelegramError(secondInnerError)) {
+                                console.error(`Telegram API error: ${secondInnerError.message}`);
+                            }
+                            return chatIdToNormalize
+                        }
+                    } else {
+                        if (isTelegramError(innerError)) {
+                            console.error(`Telegram API error: ${innerError.message}`);
+                        }
+                        return chatIdToNormalize
                     }
-                    return chatIdToNormalize
                 }
             } else {
                 if (isTelegramError(error)) {

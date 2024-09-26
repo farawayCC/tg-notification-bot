@@ -1,10 +1,11 @@
 {
   "name": "tg-notification-bot",
-  "version": "1.1.0",
-  "main": "dist/index.js",
+  "version": "1.1.2",
+  "main": "bundle.js",
   "scripts": {
     "build": "rollup -c ./config/rollup.config.js",
-    "lint": "eslint -c ./config/.eslintrc.cjs src"
+    "lint": "eslint -c ./config/.eslintrc.cjs src",
+    "lint:fix": "eslint -c ./config/.eslintrc.cjs src --fix"
   },
   "repository": {
     "type": "git",
