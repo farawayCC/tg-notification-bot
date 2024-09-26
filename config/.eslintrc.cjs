@@ -27,7 +27,7 @@ module.exports = {
         // Stylistic issues
         "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
         "comma-dangle": ["error", "always-multiline"],
-        "semi": ["error", "never"],
+        "semi": ["error", "always"],
         "quotes": ["error", "single"],
 
         // ECMAScript 6
@@ -49,4 +49,4 @@ module.exports = {
             },
         },
     ],
-}
+};
