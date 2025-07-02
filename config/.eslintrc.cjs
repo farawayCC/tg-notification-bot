@@ -28,7 +28,7 @@ module.exports = {
         "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
         "comma-dangle": ["error", "always-multiline"],
         "semi": ["error", "always"],
-        "quotes": ["error", "single"],
+        "quotes": ["error", "double"],
 
         // ECMAScript 6
         "arrow-body-style": "warn",
@@ -46,6 +46,13 @@ module.exports = {
             files: ["*.cjs"],
             rules: {
                 "quotes": ["off", "backtick"],
+            },
+        },
+        {
+            files: ["*.d.ts"],
+            rules: {
+                "no-undef": "off",
+                "no-unused-vars": "off",
             },
         },
     ],

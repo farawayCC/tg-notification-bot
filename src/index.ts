@@ -116,6 +116,17 @@ const createTgNotificationBot = ({ token, chatId }: TgNotificationBot) => {
         }
     };
 
+    const sendMessageWithMarkdown = async (message: string) => {
+        const normalizedChatId = await normalizeChatId(chatId);
+        try {
+            await bot.sendMessage(normalizedChatId, message, {
+                parse_mode: "MarkdownV2",
+            });
+        } catch (error) {
+            handleSendError(error, normalizedChatId);
+        }
+    };
+
     const sendPhoto = async (photo: string, caption?: string) => {
         const normalizedChatId = await normalizeChatId(chatId);
         try {
@@ -136,6 +147,7 @@ const createTgNotificationBot = ({ token, chatId }: TgNotificationBot) => {
 
     return {
         sendMessage,
+        sendMessageWithMarkdown,
         sendPhoto,
         sendDocument,
     };
