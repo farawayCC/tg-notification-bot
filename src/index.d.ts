@@ -1,12 +1,20 @@
-export interface TgNotificationBotOptions {
+type ChatId = number | string;
+
+interface TgNotificationBot {
     token: string;
-    chatId: string | number;
+    chatId: ChatId;
 }
 
-export interface TgNotificationBot {
-    send: (message: string) => Promise<void>;
-}
+/**
+ * Creates a Telegram notification bot instance.
+ * @param config - The bot configuration object containing the token and chatId.
+ * @returns An object with sendMessage, sendPhoto, and sendDocument methods.
+ */
+declare function createTgNotificationBot(config: TgNotificationBot): {
+    sendMessage: (message: string) => Promise<void>;
+    sendPhoto: (photo: string, caption?: string) => Promise<void>;
+    sendDocument: (document: string, caption?: string) => Promise<void>;
+};
 
-export default function createTgNotificationBot(
-    options: TgNotificationBotOptions,
-): TgNotificationBot;
+export default createTgNotificationBot;
+export type { ChatId, TgNotificationBot };

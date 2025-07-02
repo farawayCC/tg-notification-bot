@@ -39,5 +39,9 @@ const bot = createTgNotificationBot({ token, chatId });
 # To-Do:
 - [ ] Add ability to send documents using `path`, `Buffer`, or `ReadableStream` instead of file paths.
 
+# How to publish to npm
+1. Update the version in `package.json`.
+2. Run `npm run build && npm publish`.
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
