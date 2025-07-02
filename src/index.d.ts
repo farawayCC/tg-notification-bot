@@ -12,6 +12,7 @@ interface TgNotificationBot {
  */
 declare function createTgNotificationBot(config: TgNotificationBot): {
     sendMessage: (message: string) => Promise<void>;
+    sendMessageWithMarkdown: (message: string) => Promise<void>;
     sendPhoto: (photo: string, caption?: string) => Promise<void>;
     sendDocument: (document: string, caption?: string) => Promise<void>;
 };
